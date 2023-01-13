@@ -13,6 +13,9 @@ import { SaveVideoDetailsComponent } from './components/save-video-details/save-
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSelectModule} from '@angular/material/select';
+import {MatInputModule} from "@angular/material/input";
+import { FlexLayoutModule } from '@angular/flex-layout';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,14 +27,16 @@ import { MatSelectModule} from '@angular/material/select';
     MatToolbarModule,
     MatIconModule,
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
+    FlexLayoutModule,
     NgxFileDropModule,
     HttpClientModule,
     MatButtonModule,
     MatFormFieldModule,
     MatSelectModule,
-
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]
