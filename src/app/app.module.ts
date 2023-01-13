@@ -11,8 +11,8 @@ import { HeaderComponent } from './components/header/header.component';
 import {MatIconModule} from "@angular/material/icon";
 import { SaveVideoDetailsComponent } from './components/save-video-details/save-video-details.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatSelectModule, MatToolbarModule } from '@angular/material';
-
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSelectModule} from '@angular/material/select';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,6 +31,7 @@ import { MatSelectModule, MatToolbarModule } from '@angular/material';
     MatButtonModule,
     MatFormFieldModule,
     MatSelectModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
