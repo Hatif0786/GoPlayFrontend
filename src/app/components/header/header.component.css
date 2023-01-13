@@ -1,0 +1,18 @@
+.example-spacer {
+    flex: 1 1 auto;
+  }
+
+mat-toolbar{
+    background-color:transparent;
+}
+
+.img-fluid {
+    margin-top: 15px;
+    max-width: 55% !important;
+    margin-left: -40px;
+    margin-right: 17% !important;
+  }
+  
+  .flex {
+    display: flex;
+  }
