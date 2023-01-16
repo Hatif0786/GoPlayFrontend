@@ -2,23 +2,71 @@
     <div fxFlex="20%">Hi</div>
     <div fxFlex="30%">
 
-        <div class="mat-title">Add Video Metadata</div>
+        <mat-card-title>Add Video Metadata</mat-card-title>
 
-        <form>
-          <mat-form-field appearance="fill">
-            <mat-label>Input</mat-label>
-            <input matInput>
+        <form [formGroup]="this.saveVideoDetailsForm">
+          <mat-form-field appearance="outline">
+            <mat-label>Title</mat-label>
+            <input matInput required [formControl]="title">
           </mat-form-field>
-          <mat-form-field appearance="fill">
-            <mat-label>Select</mat-label>
-            <mat-select>
-              <mat-option value="one">First option</mat-option>
-              <mat-option value="two">Second option</mat-option>
+          <mat-form-field appearance="outline">
+            <mat-label>Description</mat-label>
+            <input matInput required [formControl]="description">
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Video Status</mat-label>
+            <mat-select [formControl]="videoStatus">
+              <mat-option value="PUBLIC">PUBLIC</mat-option>
+              <mat-option value="PRIVATE">PRIVATE</mat-option>
             </mat-select>
           </mat-form-field>
+
+          <mat-form-field class="example-chip-list" appearance="outline">
+            <mat-label>Tags</mat-label>
+            <mat-chip-grid #chipGrid aria-label="Enter fruits">
+              <mat-chip-row *ngFor="let fruit of this.tags"
+                            (removed)="remove(fruit)"
+                            [editable]="true"
+                            (edited)="edit(fruit, $event)"
+                            [aria-description]="'press enter to edit ' + fruit">
+                {{fruit}}
+                <button matChipRemove [attr.aria-label]="'remove ' + fruit">
+                  <mat-icon>cancel</mat-icon>
+                </button>
+              </mat-chip-row>
+              <input placeholder="Add Tags..."
+                     [matChipInputFor]="chipGrid"
+                     [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                     [matChipInputAddOnBlur]="addOnBlur"
+                     (matChipInputTokenEnd)="add($event)"/>
+            </mat-chip-grid>
+          </mat-form-field>
+
+          <div>
+            <label for="inputGroupField01">Upload Thumbnail:
+              <div class="custom-file">
+                <input type="file" class="custom-file-input" aria-describedby="inputGroupFileAddon01" id="inputGroupField01" (change)="onFileSelected($event)">
+              </div>
+              <br/>
+              <div *ngIf="fileSelected">
+                <div>
+                  <p>Selected File: <b>{{this.selectedFileName}}</b></p>
+                </div>
+  
+                <div>
+                  <button style="border-radius:18px;" mat-raised-button color="primary" (click)="uploadThumbnail()">Upload</button>
+                </div>
+                <br/>
+              </div>
+            </label>
+          </div>
+
+          <div>
+            <button type="submit" mat-raised-button color="primary" (click)="uploadDetails()">Save Details</button>
+          </div>
         </form> 
 
     </div>
-    <div fxFlex="30%">Video Player</div>
-    <div fxFlex="20%">Hi</div>
+    <div fxFlex="30%"><app-video-player [videoUrl]="videoUrl"></app-video-player></div>
+     <div fxFlex="20%">Hi</div> 
 </div>
