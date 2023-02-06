@@ -1,0 +1,9 @@
+<div fxLayout="row wrap">
+    <h3>Watch History</h3>
+</div>
+
+<div fxLayout="row wrap" fxLayoutGap="12px grid">
+    <div  fxFlex="30%" *ngFor="let featuredVideo of HistoryVideos">
+         <app-video-card [video]="featuredVideo"></app-video-card>
+    </div>
+ </div>

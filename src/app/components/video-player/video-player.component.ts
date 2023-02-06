@@ -11,7 +11,8 @@ export class VideoPlayerComponent {
 
   preload: string = 'auto';
   api!: VgApiService;
-  @Input() videoUrl!: string | '';
+  @Input() 
+  videoUrl!: string;
 
   onPlayerReady(api: VgApiService) {
     this.api = api;

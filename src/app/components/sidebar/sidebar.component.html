@@ -1,0 +1,66 @@
+<mat-sidenav mode="side"  opened="{{sidenavState | async }}">
+    <mat-nav-list role="list">
+        <mat-list-item role="listitem" routerLink="/featured">
+            <mat-icon matListItemIcon>home</mat-icon>
+            <span matListItemTitle><h4>Home</h4></span>
+        </mat-list-item>
+        <mat-list-item role="listitem" routerLink="/subscriptions">
+            <mat-icon matListItemIcon>subscriptions</mat-icon>
+            <span matListItemTitle><h4>Subscriptions</h4></span>
+        </mat-list-item>
+        <mat-list-item role="listitem" routerLink="/history">
+            <mat-icon matListItemIcon>history</mat-icon>
+            <span matListItemTitle><h4>History</h4></span>
+        </mat-list-item>
+        <mat-list-item role="listitem" routerLink="/liked-videos">
+            <mat-icon matListItemIcon>thumb_up</mat-icon>
+            <span matListItemTitle><h4>Liked Videos</h4></span>
+        </mat-list-item>
+
+
+        <hr style="max-width: 90%">
+
+
+        <h3 style="margin-left: 10px;">Subscriptions</h3>
+         <div fxLayout="row" *ngFor="let u of SubscribedToUsers">
+            <mat-list-item role="listitem" routerLink="">
+                <mat-icon matListItemIcon>account_circle</mat-icon>
+                <div matListItemTitle style="width: 100px;
+                overflow: hidden; 
+                white-space: nowrap; 
+                text-overflow: ellipsis !important; "><b>{{u.fullName}}</b></div>
+            </mat-list-item>  
+         </div>
+
+        <hr style="max-width: 90%">
+
+        <h3 style="margin-left: 10px;">Saved For Later</h3>
+         <div fxLayout="row" *ngFor="let u of savedToWatchLaterVid">
+            <mat-list-item role="listitem" [routerLink]="'/video-details/'+u.id">
+                <mat-icon matListItemIcon>play_arrow</mat-icon>
+                <div matListItemTitle style="width: 100px;
+                overflow: hidden; 
+                white-space: nowrap; 
+                text-overflow: ellipsis !important; "><b>{{u.title}}</b></div>
+            </mat-list-item>  
+         </div>
+
+        <hr style="max-width: 90%">
+
+        <mat-list-item role="listitem" routerLink="/account-info">
+            <mat-icon matListItemIcon>account_circle</mat-icon>
+            <span matListItemTitle><h4>Account</h4></span>
+        </mat-list-item>
+
+        <mat-list-item role="listitem" routerLink="/liked-videos">
+            <mat-icon matListItemIcon>favorite</mat-icon>
+            <span matListItemTitle><h4>Favorite</h4></span>
+        </mat-list-item>
+
+        <mat-list-item role="listitem">
+            <mat-icon matListItemIcon>logout</mat-icon>
+            <span matListItemTitle><h4>Logout</h4></span>
+        </mat-list-item>
+
+      </mat-nav-list>
+</mat-sidenav>

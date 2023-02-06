@@ -1,0 +1,8 @@
+<mat-card style="border-radius: 15px; padding-bottom: 20px;" class="example-card" routerLink="/video-details/{{this.video.id}}">
+    <img mat-card-image [src]="video.thumbnailUrl" alt="thumbnail">
+    <mat-card-header>
+      <img mat-card-avatar class="example-header-image" src="{{this.user?.userImage}}" alt="">
+      <mat-card-title><b>{{video.title}}</b></mat-card-title>
+      <mat-card-subtitle>{{video.description}}</mat-card-subtitle>
+    </mat-card-header>
+</mat-card>

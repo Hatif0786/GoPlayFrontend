@@ -1,0 +1,87 @@
+<!-- <div fxLayout="row">
+    <div fxFlex="65%" class="video-details">
+        <app-video-player *ngIf="this.videoAvailable" [videoUrl]="videoUrl"></app-video-player>
+        <div class="mat-title"><h2>{{videoTitle}}</h2></div>
+        <div fxLayout="row">
+            <div fxFlex="50%">
+                <span>{{viewCount}} Views </span>
+                <span class="separator"></span>
+                <span> 03rd Feb, 2023 </span>
+                <span class="separator"></span>
+                <span> {{videoDescription}}</span>
+            </div>
+            <div fxFlex="50%"></div>
+        </div>
+    </div>
+    <div fxFlex="5%"></div>
+    <div fxFlex="30%">Suggestion Bar</div>
+</div> -->
+
+<div fxLayout="row">
+    <div fxFlex="65%" class="video-detail">
+      <div fxLayout="column" fxLayoutGap="8px">
+        <app-video-player *ngIf="videoAvailable" [videoUrl]="videoUrl"></app-video-player>
+        <div class="mat-title"><h2>{{videoTitle}}</h2></div>
+        <div fxLayout="row">
+          <div fxFlex="50%">
+            <span class="view-count">{{viewCount}}</span>
+            <span class="dot"></span>
+            <span class="video-upload-date">Apr 13, 2021</span>
+          </div>
+          <div fxFlex="50%" fxLayoutAlign="end end">
+            <span class="like-dislike-section">
+                <button mat-icon-button class="thumbs-up" (click)="likeVideo()">
+                  <span class="inline"><mat-icon>thumb_up_off_alt</mat-icon> {{likes}}</span>
+                </button>
+                <button mat-icon-button class="thumbs-down" (click)="disLikeVideo()">
+                  <span class="inline"><mat-icon>thumb_down_off_alt</mat-icon> {{dislikes}}</span>
+                </button>
+                <button *ngIf="NotBookmarked && !check2" mat-icon-button class="thumbs-down" (click)="saveToWatchLater()">
+                  <mat-icon >bookmark</mat-icon>
+                </button>
+                <button *ngIf="Bookmarked || check2"  mat-icon-button class="thumbs-down" (click)="removeFromsaveToWatchLater()">
+                  <mat-icon >bookmark_added</mat-icon>
+                </button>
+            </span>
+          </div>
+        </div>
+        <mat-divider></mat-divider>
+        <mat-card-header>
+          <div mat-card-avatar style="background-image: url('{{this.user?.userImage}}')" class="example-header-image"></div>
+          <mat-card-title>{{this.user?.fullName}}</mat-card-title>
+          <mat-card-subtitle class="subtitles">4.2K Subscribers</mat-card-subtitle>
+          <br/>
+          <button style="border-radius:20px;" *ngIf="showSubscribeButton" class="subscribe-button" mat-raised-button color="warn"
+                  (click)="subscribeToUser()">SUBSCRIBE
+          </button>
+          <button style="border-radius:20px;" *ngIf="showUnsubscribeButton" class="subscribe-button-clicked"
+                  mat-raised-button color="accent"
+                  (click)="unSubscribeToUser()">
+            UNSUBSCRIBE
+          </button>
+        </mat-card-header>
+        <div>{{videoDescription}}</div>
+        <mat-divider></mat-divider>
+        
+        <mat-divider></mat-divider>
+        <app-comments *ngIf="videoAvailable"></app-comments>
+      </div>
+    </div>
+    <div fxFlex="3%"></div>
+    <div fxFlex="32%" class="suggestion-bar">
+      <h3>Suggestion Bar</h3>
+        <div fxLayout="row" *ngFor="let video of HistoryVideos">
+          <mat-card class="example-card" style="margin-bottom:10px; border-radius: 25px; width: 100%;" [routerLink]="'/video-details/'+ video.id">
+            <mat-card-header>
+              <mat-card-title-group>
+                <img mat-card-sm-image src="{{video.thumbnailUrl}}" style="border-radius:10px;">
+                <mat-card-title><b>{{video.title}}</b></mat-card-title>
+                <mat-card-subtitle>{{video.description}}</mat-card-subtitle>
+              </mat-card-title-group>
+            </mat-card-header>
+            <mat-card-content>
+            </mat-card-content>
+          </mat-card>
+        </div>
+    </div>
+  </div>

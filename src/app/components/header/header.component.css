@@ -16,3 +16,13 @@ mat-toolbar{
   .flex {
     display: flex;
   }
+
+
+#loginBtn{
+  border-radius: 18px;
+}
+
+#loginBtn:hover{
+  background-color: black;
+  color: white;
+}

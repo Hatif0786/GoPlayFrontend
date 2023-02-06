@@ -1,0 +1,8 @@
+.sidenav-container{
+    height: 100vh;
+} 
+
+.sidenav-content{
+    margin-left: 15rem;
+    padding: 16px;
+}

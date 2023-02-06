@@ -1,0 +1,15 @@
+.image-upload>input {
+    display: none;
+  }
+
+  .example-full-width{
+    width: 100%;
+  }
+
+
+#center{
+  align-items: center;
+}
+
+
+md-tab { height: 100% !important; }

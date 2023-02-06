@@ -6,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { VideoService } from 'src/app/service/video.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { VideoDto } from 'src/app/models/video-dto';
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-save-video-details',
@@ -14,13 +15,13 @@ import { VideoDto } from 'src/app/models/video-dto';
 })
 export class SaveVideoDetailsComponent implements OnInit {
 
-  constructor(private activatedRoute: ActivatedRoute, private service: VideoService,
+  constructor(private activatedRoute: ActivatedRoute, private service: VideoService, private uservice: UserService,
               private _snackBar: MatSnackBar) { 
     this.videoId=this.activatedRoute.snapshot.params['videoId'];
     this.service.getVideo(this.videoId).subscribe(data=> {
       this.videoUrl = data.videoUrl;
       this.thumbnailUrl = data.thumbnailUrl;
-      console.log(data.videoUrl);
+      this.videoAvailable=true;
     })
     this.saveVideoDetailsForm = new FormGroup({
       title: this.title,
@@ -38,6 +39,10 @@ export class SaveVideoDetailsComponent implements OnInit {
   fileSelected: Boolean | undefined;
   videoUrl!: string;
   thumbnailUrl!: string;
+  likes: number = 0;
+  dislikes: number = 0;
+  viewCount: number = 0;
+  videoAvailable: boolean = false;
 
 
   add(event: MatChipInputEvent): void {
@@ -100,7 +105,11 @@ export class SaveVideoDetailsComponent implements OnInit {
       "tags": this.tags,
       "videoStatus": this.saveVideoDetailsForm.get("videoStatus")?.value,
       "videoUrl": this.videoUrl,
-      "thumbnailUrl": this.thumbnailUrl
+      "thumbnailUrl": this.thumbnailUrl,
+      "likes": this.likes,
+      "dislikes": this.dislikes,
+      "viewCount": this.viewCount,
+      "userUploaded": this.uservice.userid
     }
     this.service.saveVideoDetails(videoMetaData).subscribe(data=> {
       console.log(data);
